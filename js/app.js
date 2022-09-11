@@ -60,10 +60,10 @@ const showProductDetails = (product_id) => {
 
 const showProductDetailsInModal = (product_details) => {
    console.log(product_details);
-   setInnerText1('exampleModalLabel', product_details?.title);
-   setInnerText1('productId', product_details?.id);
-   setInnerText1('modal_body', product_details?.description);
-   setInnerText1('rating', product_details?.rating?.rate);
+   setInnerText('exampleModalLabel', product_details?.title);
+   setInnerText('productId', product_details?.id);
+   setInnerText('modal_body', product_details?.description);
+   setInnerText('rating', product_details?.rating?.rate);
 };
 
 const getInputValue = (id) => {
@@ -82,9 +82,9 @@ const updatePrice = (id, value) => {
 
 // set innerText function
 const setInnerText = (id, value) => {
-   document.getElementById(id).innerText = Math.round(value);
-};
-const setInnerText1 = (id, value) => {
+   if(typeof (value) === "number"){
+      value = Math.round(value);
+   }
    document.getElementById(id).innerText = value;
 };
 
