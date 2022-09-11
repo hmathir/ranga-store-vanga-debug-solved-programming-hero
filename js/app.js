@@ -18,7 +18,7 @@ const showProducts = (products) => {
 
    document.getElementById("all-products").innerHTML = "";
 
-   const allProducts = products.slice(0, 10).map((pd) => pd);
+   const allProducts = products.map((pd) => pd);
    for (const product of allProducts) {
       const image = product.image;
       const div = document.createElement('div');
@@ -104,6 +104,9 @@ const updateTaxAndCharge = () => {
       setInnerText('delivery-charge', 30);
       setInnerText('total-tax', priceConverted * 0.2);
    }
+   else{
+      setInnerText('delivery-charge', 20);
+   }
 };
 
 //grandTotal update function
@@ -116,7 +119,7 @@ const updateTotal = () => {
 document.getElementById("search-btn").addEventListener("click", function () {
    const inputField = document.getElementById("input-value").value;
    const searchedProduct = arr[0].filter((p) => {
-      return p.category.startsWith(`${inputField}`)
+      return p.title.toLowerCase().includes(`${inputField.toLowerCase()}`)
    });
    showProducts(searchedProduct);
  });
